@@ -1,4 +1,7 @@
+import 'package:cinemax/core/routing/routes.dart';
 import 'package:flutter/material.dart';
+
+import '../../features/onboarding/presenattion/view/onboarding_view.dart';
 
 
 class AppRouter {
@@ -7,10 +10,10 @@ class AppRouter {
     //final arguments = settings.arguments;
 
     switch (settings.name) {
-      // case Routes.onBoardingView:
-      //   return MaterialPageRoute(
-      //     builder: (context) => const OnboardingView(),
-      //   );
+      case Routes.onBoardingView:
+        return MaterialPageRoute(
+          builder: (context) => const OnboardingView(),
+        );
       // case Routes.homeView:
       //   return MaterialPageRoute(
       //     builder: (context) => ChangeNotifierProvider(

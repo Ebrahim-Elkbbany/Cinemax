@@ -1,4 +1,4 @@
-import 'package:cinemax/core/theming/styles.dart';
+import 'package:cinemax/core/theming/font_styles.dart';
 import 'package:flutter/material.dart';
 
 
