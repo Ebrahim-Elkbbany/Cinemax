@@ -1,5 +1,5 @@
 import 'package:cinemax/core/theming/app_colors.dart';
-import 'package:cinemax/core/theming/styles.dart';
+import 'package:cinemax/core/theming/font_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -41,7 +41,10 @@ class CustomButton extends StatelessWidget {
         child: Center(
           child: Text(
             buttonName,
-            style: style ?? FontStyles.font18BlackMedium,
+            style: style ?? FontStyles.font18BlackMedium.copyWith(
+                color:  AppColors.kBackGroundColor,
+
+            ),
           ),
         ),
       ),
