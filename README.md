@@ -1,4 +1,4 @@
-# CINEMAX App
+![image](https://github.com/Ebrahim-Elkbbany/CINEMAX-App/assets/136932497/06eb8001-baf5-4aee-b15d-97058951517c)![onboarding](https://github.com/Ebrahim-Elkbbany/CINEMAX-App/assets/136932497/94965ec1-efeb-4f86-96a3-e2f4292d908b)# CINEMAX App
 
 Movies App
 
@@ -16,14 +16,15 @@ Movies App
 
 ## App Screens 📱
 
- **Onboarding Screen**
-  ![onboarding.png](..%2F..%2Fonboarding.png)
-  ![Screenshot_20240310_184607.png](..%2F..%2FScreenshot_20240310_184607.png) 
- 
+ **Onboarding**
+  ![onboarding](https://github.com/Ebrahim-Elkbbany/CINEMAX-App/assets/136932497/fdae33ee-8865-4451-b4b3-20671ce93cff)
+  ![Screenshot_20240310_184607](https://github.com/Ebrahim-Elkbbany/CINEMAX-App/assets/136932497/fc2846bd-5175-4a91-831d-58793a33b8d7)
+
  **login Screen**
-  ![img_3.png](img_3.png)
-  ![img_6.png](img_6.png)
+  ![image](https://github.com/Ebrahim-Elkbbany/CINEMAX-App/assets/136932497/7dd1f302-7fb6-4de8-a831-96dc4d49fa36)
+ ![image](https://github.com/Ebrahim-Elkbbany/CINEMAX-App/assets/136932497/aaa5cb03-47e9-4c3f-9ff0-260b80f1bc2c)
 
  **Signup Screen**
-  ![img_4.png](img_4.png)
-  ![img_5.png](img_5.png)
+  ![image](https://github.com/Ebrahim-Elkbbany/CINEMAX-App/assets/136932497/cc19c7f5-a841-4ca9-9058-b59b96e2d0ce)
+  ![image](https://github.com/Ebrahim-Elkbbany/CINEMAX-App/assets/136932497/4ca265d5-59ff-45d1-a8a0-4ed55366cbfe)
+
