@@ -31,7 +31,7 @@ class CineMaxApp extends StatelessWidget {
         builder:(context, child) {
           final themeProvider = Provider.of<AppThemeProvider>(context);
           return MaterialApp( debugShowCheckedModeBanner: false,
-            initialRoute: Routes.onBoardingView,
+            initialRoute: Routes.initialRoutes,
             theme:  themeProvider.isDarkTheme ?darkTheme :lightTheme,
             onGenerateRoute: AppRouter().generateRoute,
           );

@@ -1,4 +1,7 @@
+import 'package:cinemax/core/helpers/cache_helper.dart';
+import 'package:cinemax/core/helpers/extensions.dart';
 import 'package:cinemax/core/helpers/responsive_spacing.dart';
+import 'package:cinemax/core/routing/routes.dart';
 import 'package:cinemax/core/theming/app_colors.dart';
 import 'package:cinemax/core/theming/font_styles.dart';
 import 'package:cinemax/core/widgets/custom_button.dart';
@@ -13,14 +16,8 @@ class OnboardingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTheme  = Provider.of<AppThemeProvider>(context).isDarkTheme  ;
-    appTheme ? SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle.light.copyWith(
-            statusBarColor: AppColors.kBackGroundColor
-        )): SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle.dark.copyWith(
-          statusBarColor: Colors.white
-        ));
+    final appTheme = Provider.of<AppThemeProvider>(context).isDarkTheme;
+    Provider.of<AppThemeProvider>(context).getStatusBar();
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -35,23 +32,24 @@ class OnboardingView extends StatelessWidget {
               verticalSpacer(20),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 2.w),
-                child: Text(
-                  'Welcome to our Movies App!',
-                  style: FontStyles.font28whiteMedium.copyWith(
-                    color: appTheme ? AppColors.kSecondaryColor : AppColors.kBackGroundColor,
-                  )
-                ),
+                child: Text('Welcome to our Movies App!',
+                    style: FontStyles.font28whiteMedium.copyWith(
+                      color: appTheme
+                          ? AppColors.kSecondaryColor
+                          : AppColors.kBackGroundColor,
+                    )),
               ),
               verticalSpacer(10),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30.w),
                 child: Text(
-                  textAlign: TextAlign.center,
-                  'Discover, explore, and enjoy your favorite movies with our app. Whether you\'re a casual moviegoer or a die-hard film buff, we\'ve got something for everyone.',
-                  style: FontStyles.font15WhiteMedium.copyWith(
-                    color: appTheme ? AppColors.kSecondaryColor : AppColors.kBackGroundColor,
-                  )
-                ),
+                    textAlign: TextAlign.center,
+                    'Discover, explore, and enjoy your favorite movies with our app. Whether you\'re a casual moviegoer or a die-hard film buff, we\'ve got something for everyone.',
+                    style: FontStyles.font15WhiteMedium.copyWith(
+                      color: appTheme
+                          ? AppColors.kSecondaryColor
+                          : AppColors.kBackGroundColor,
+                    )),
               ),
               verticalSpacer(30),
               Padding(
@@ -59,7 +57,12 @@ class OnboardingView extends StatelessWidget {
                 child: CustomButton(
                   buttonName: 'Enter now',
                   onPressed: () {
-                    // context.pushNamedAndRemoveUntil(Routes.registerView,predicate: (route) => false,);
+                    CacheHelper.saveData(key: 'onboarding', value: true).then(
+                      (value) => context.pushNamedAndRemoveUntil(
+                        Routes.registerView,
+                        predicate: (route) => false,
+                      ),
+                    );
                   },
                 ),
               ),

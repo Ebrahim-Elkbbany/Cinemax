@@ -1,8 +1,9 @@
 import 'package:cinemax/core/theming/app_colors.dart';
 import 'package:cinemax/core/theming/font_styles.dart';
+import 'package:cinemax/features/onboarding/presenattion/manager/app_theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:provider/provider.dart';
 
 class AppTextFormField extends StatelessWidget {
   final EdgeInsetsGeometry? contentPadding;
@@ -36,6 +37,8 @@ class AppTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkTheme = Provider.of<AppThemeProvider>(context).isDarkTheme;
+
     return TextFormField(
       cursorColor: AppColors.kPrimaryColor,
       controller: controller,
@@ -47,46 +50,53 @@ class AppTextFormField extends StatelessWidget {
             OutlineInputBorder(
               borderSide: const BorderSide(
                 color: AppColors.kPrimaryColor,
-                width: 1.3,
+                width: 1,
               ),
               borderRadius: BorderRadius.circular(16.0),
             ),
         enabledBorder: enabledBorder ??
             OutlineInputBorder(
-              borderSide: const BorderSide(
-                color: AppColors.imageGreyColor,
-                width: 1.3,
+              borderSide:  BorderSide(
+                color: isDarkTheme ? AppColors.imageGreyColor :Colors.black.withOpacity(0.35) ,
+                width: 1,
               ),
               borderRadius: BorderRadius.circular(16.0),
             ),
         errorBorder: OutlineInputBorder(
           borderSide: const BorderSide(
             color: Colors.red,
-            width: 1.3,
+            width: 1,
           ),
           borderRadius: BorderRadius.circular(16.0),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderSide: const BorderSide(
             color: Colors.red,
-            width: 1.3,
+            width: 1,
           ),
           borderRadius: BorderRadius.circular(16.0),
         ),
-        hintStyle: hintStyle ?? FontStyles.font18whiteMedium,
+        hintStyle: hintStyle ?? FontStyles.font18whiteMedium.copyWith(
+          color: isDarkTheme ? null :Colors.black.withOpacity(0.20000000298023224),
+
+        ),
         hintText: hintText,
         suffixIcon: GestureDetector(
           onTap: suffixIconTap,
           child: Icon(
             suffixIcon,
-
           ),
         ),
-        fillColor: backgroundColor ?? AppColors.imageGreyColor,
+        fillColor: backgroundColor ?? (isDarkTheme
+            ? AppColors.imageGreyColor
+            : AppColors.kSecondaryColor),
         filled: true,
       ),
       obscureText: isObscureText ?? false,
-      style:  FontStyles.font18white70Medium,
+      style: FontStyles.font18white70Medium.copyWith(
+        color: isDarkTheme ? Colors.white70 :Colors.black87,
+        fontWeight: isDarkTheme ? null : FontWeight.w400
+      ),
       validator: (value) {
         return validator(value);
       },
