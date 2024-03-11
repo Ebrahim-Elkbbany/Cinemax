@@ -1,5 +1,3 @@
-![image](https://github.com/Ebrahim-Elkbbany/CINEMAX-App/assets/136932497/06eb8001-baf5-4aee-b15d-97058951517c)![onboarding](https://github.com/Ebrahim-Elkbbany/CINEMAX-App/assets/136932497/94965ec1-efeb-4f86-96a3-e2f4292d908b)# CINEMAX App
-
 Movies App
 
 ## Features
