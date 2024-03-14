@@ -1,4 +1,5 @@
 import 'package:cinemax/core/helpers/service_locator.dart';
+import 'package:cinemax/features/favourites/presentation/manager/favourites_provider.dart';
 import 'package:cinemax/features/home/data/repos/home_repo.dart';
 import 'package:cinemax/features/home/presentation/manager/home_provider.dart';
 import 'package:cinemax/features/layout/manager/bottom_nav_logic.dart';
@@ -20,6 +21,11 @@ class LayoutView extends StatelessWidget {
           )
             ..getTopMovies()
             ..getMostPopularMovies(),
+        ),
+
+        ChangeNotifierProvider(
+          create: (context) => FavouritesProvider(
+          )..getFavourite(),
         ),
       ],
       child: Consumer<BottomNavLogic>(

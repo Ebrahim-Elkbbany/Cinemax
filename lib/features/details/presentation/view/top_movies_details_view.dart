@@ -38,6 +38,8 @@ class TopMovieDetailsView extends StatelessWidget {
             builder: (context, value, child) => value.topMoviesModel != null &&
                     !value.topMoviesIsLoading
                 ? MoviesDetailsFirstSec(
+              sorting: value.topMoviesModel!.genre,
+              image:  value.topMoviesModel!.image,
                     isDarkTheme: isDarkTheme,
                     controller: YoutubePlayerController(
                         initialVideoId: YoutubePlayer.convertUrlToId(

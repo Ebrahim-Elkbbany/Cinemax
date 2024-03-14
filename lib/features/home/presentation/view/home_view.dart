@@ -1,4 +1,5 @@
 import 'package:cinemax/core/helpers/responsive_spacing.dart';
+import 'package:cinemax/features/favourites/presentation/manager/favourites_provider.dart';
 import 'package:cinemax/features/home/presentation/view/widgets/image_page_view_sec.dart';
 import 'package:cinemax/features/home/presentation/view/widgets/most_popular_movies_sec.dart';
 import 'package:cinemax/features/home/presentation/view/widgets/top_movies_list_view.dart';
@@ -12,6 +13,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDarkTheme = Provider.of<AppThemeProvider>(context).isDarkTheme;
+    Provider.of<FavouritesProvider>(context, listen: true).getFavourite();
     Provider.of<AppThemeProvider>(context).getStatusBar();
     return Scaffold(
       body: SafeArea(
