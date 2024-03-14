@@ -3,6 +3,7 @@ import 'package:cinemax/core/theming/app_colors.dart';
 import 'package:cinemax/core/theming/font_styles.dart';
 import 'package:cinemax/core/widgets/custom_button.dart';
 import 'package:cinemax/core/widgets/custom_cached_network_image.dart';
+import 'package:cinemax/features/details/presentation/view/top_movies_details_view.dart';
 import 'package:cinemax/features/home/presentation/manager/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,12 +28,15 @@ class ImagePageViewSec extends StatelessWidget {
             child: PageView.builder(
               itemCount: 5  ,
               controller: pageController,
-              itemBuilder: (context, index) =>
-                  CustomCachedNetworkImage(
-                    imageUrl: provider.topMoviesList[index].bigImage,
-                    width: double.infinity,
-                    height: 500.h,
-                  ),
+              itemBuilder: (context, index) {
+                provider.index= index;
+               return CustomCachedNetworkImage(
+                  imageUrl: provider.topMoviesList[index].bigImage,
+                  width: double.infinity,
+                  height: 500.h,
+                );
+              }
+
             ),
           ),
           Positioned(
@@ -89,6 +93,17 @@ class ImagePageViewSec extends StatelessWidget {
                   ),
                   const Spacer(),
                   CustomButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                TopMovieDetailsView(
+                                  id: provider.topMoviesList[provider.index].id,
+                                  title: provider.topMoviesList[provider.index].title,
+                                )),
+                      );
+                    },
                     buttonName: 'Details',
                     width: 155.w,
                     height: 48.h,

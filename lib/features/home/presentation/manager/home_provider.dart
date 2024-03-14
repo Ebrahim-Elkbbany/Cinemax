@@ -11,6 +11,7 @@ class HomeProvider extends ChangeNotifier {
   bool topMoviesIsLoading = false;
   String ? mostPopularMoviesError;
   bool mostPopularMoviesIsLoading = false;
+  int index =0;
 
 
   HomeProvider(this.homeRepo);

@@ -28,10 +28,12 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  youtube_player_flutter:
   shimmer: ^3.0.0
-  smooth_page_indicator:
+  smooth_page_indicator: ^1.1.0
   shared_preferences: ^2.2.2
   cached_network_image: ^3.3.1
+  flutter_native_splash: ^2.3.13
   get_it: ^7.6.7
   dartz: ^0.10.1
   dio: ^5.4.1
