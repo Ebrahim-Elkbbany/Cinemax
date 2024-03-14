@@ -13,15 +13,22 @@ class FontStyles {
     fontWeight: FontWeightHelper.medium,
   );
 
-  static TextStyle font28whiteMedium = TextStyle(
+  static TextStyle font25whiteMedium = TextStyle(
         color: Colors.white,
         fontWeight: FontWeight.w700,
-        fontSize: 28.sp
+        fontSize: 25.sp
   );
 
   static TextStyle font18white70Medium = TextStyle(
     color: Colors.white70,
     fontSize: 18.sp,
+    fontWeight: FontWeightHelper.medium,
+  );
+
+
+  static TextStyle font16whiteMedium = TextStyle(
+    color: Colors.white,
+    fontSize: 16.sp,
     fontWeight: FontWeightHelper.medium,
   );
 
@@ -31,8 +38,8 @@ class FontStyles {
     color: AppColors.kPrimaryColor,
   );
 
-  static TextStyle font18PrimaryBold = TextStyle(
-    fontSize: 18.sp,
+  static TextStyle font14PrimaryBold = TextStyle(
+    fontSize: 14.sp,
     fontWeight: FontWeight.w700,
     color: AppColors.kPrimaryColor,
   );

@@ -16,8 +16,6 @@ class AppThemeProvider extends ChangeNotifier{
         .copyWith(statusBarColor: AppColors.kBackGroundColor))
         : SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle.dark.copyWith(statusBarColor: Colors.white));
-
-    notifyListeners();
   }
 
  }

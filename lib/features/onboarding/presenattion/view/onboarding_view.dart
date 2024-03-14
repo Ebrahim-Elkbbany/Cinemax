@@ -7,7 +7,6 @@ import 'package:cinemax/core/theming/font_styles.dart';
 import 'package:cinemax/core/widgets/custom_button.dart';
 import 'package:cinemax/features/onboarding/presenattion/manager/app_theme_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
@@ -17,7 +16,6 @@ class OnboardingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appTheme = Provider.of<AppThemeProvider>(context).isDarkTheme;
-    Provider.of<AppThemeProvider>(context).getStatusBar();
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -33,7 +31,7 @@ class OnboardingView extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 2.w),
                 child: Text('Welcome to our Movies App!',
-                    style: FontStyles.font28whiteMedium.copyWith(
+                    style: FontStyles.font25whiteMedium.copyWith(
                       color: appTheme
                           ? AppColors.kSecondaryColor
                           : AppColors.kBackGroundColor,

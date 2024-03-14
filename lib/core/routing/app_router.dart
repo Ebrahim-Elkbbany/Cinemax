@@ -1,36 +1,43 @@
 import 'package:cinemax/core/helpers/cache_helper.dart';
+import 'package:cinemax/core/helpers/service_locator.dart';
 import 'package:cinemax/core/routing/routes.dart';
 import 'package:cinemax/features/auth/presentation/manager/login_provider.dart';
 import 'package:cinemax/features/auth/presentation/manager/register_provider.dart';
 import 'package:cinemax/features/auth/presentation/view/login_view.dart';
+import 'package:cinemax/features/home/data/repos/home_repo.dart';
+import 'package:cinemax/features/home/presentation/manager/home_provider.dart';
+import 'package:cinemax/features/layout/layout_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../features/auth/presentation/view/register_view.dart';
 import '../../features/onboarding/presenattion/view/onboarding_view.dart';
-
 
 class AppRouter {
   dynamic onBoarding = CacheHelper.getData(key: 'onboarding');
   dynamic token = CacheHelper.getData(key: 'token');
+
   Route generateRoute(RouteSettings settings) {
     //this arguments to be passed in any screen like this ( arguments as ClassName )
     //final arguments = settings.arguments;
 
     switch (settings.name) {
       case Routes.initialRoutes:
-        return MaterialPageRoute(builder:(context) =>  onBoarding == null ? OnboardingView() :(
-            token == null ? ChangeNotifierProvider(
-              create: (context) => LoginProvider(),
-              child: const LoginView(),
-            ) : ChangeNotifierProvider(
-              create: (context) => RegisterProvider(),
-              child: const ResisterView(),
-            )
-        ));
+        return MaterialPageRoute(
+            builder: (context) => onBoarding == null
+                ? const OnboardingView()
+                : (token == null
+                    ? ChangeNotifierProvider(
+                        create: (context) => LoginProvider(),
+                        child: const LoginView(),
+                      )
+                    : const LayoutView()));
       case Routes.onBoardingView:
         return MaterialPageRoute(
           builder: (context) => const OnboardingView(),
+        );
+      case Routes.layoutView:
+        return MaterialPageRoute(
+          builder: (context) => const LayoutView(),
         );
       case Routes.loginView:
         return MaterialPageRoute(
@@ -46,13 +53,16 @@ class AppRouter {
             child: const ResisterView(),
           ),
         );
-      // case Routes.homeView:
-      //   return MaterialPageRoute(
-      //     builder: (context) => ChangeNotifierProvider(
-      //       create: (context) => HomeProvider(getIt.get<HomeRepo>())..getMostPopularMovies()..getLatestMovies(),
-      //       child: const HomeView(),
-      //     ),
-      //   );
+      case Routes.homeView:
+        return MaterialPageRoute(
+          builder: (context) => ChangeNotifierProvider(
+            create: (context) => HomeProvider(
+              getIt.get<HomeRepo>(),
+            )
+              ..getTopMovies()
+              ..getMostPopularMovies(),
+          ),
+        );
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

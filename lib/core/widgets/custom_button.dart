@@ -14,7 +14,7 @@ class CustomButton extends StatelessWidget {
       this.onPressed,
        this.height,
        this.width=double.infinity,
-       this.radius, this.style,
+       this.radius, this.style, this.color, this.textColor,
       });
 
   final String buttonName;
@@ -23,6 +23,8 @@ class CustomButton extends StatelessWidget {
   final double ?width;
   final double ?radius;
   final TextStyle? style;
+  final Color? color;
+  final Color? textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ class CustomButton extends StatelessWidget {
         width: width ?? double.infinity,
 
         decoration:  BoxDecoration(
-           color: AppColors.kPrimaryColor,
+           color:  color ??AppColors.kPrimaryColor,
           borderRadius: BorderRadius.circular(
           radius ?? 16.w,
         ),
@@ -43,7 +45,7 @@ class CustomButton extends StatelessWidget {
           child: Text(
             buttonName,
             style: style ?? FontStyles.font18BlackMedium.copyWith(
-                color:  AppColors.kBackGroundColor,
+                color:  textColor ?? AppColors.kBackGroundColor,
 
             ),
           ),

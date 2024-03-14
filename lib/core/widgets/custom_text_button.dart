@@ -16,7 +16,7 @@ class CustomTextButton extends StatelessWidget {
       onTap: onPressed,
       child:  Text(
           text,
-         style:textStyle ??  FontStyles.font18PrimaryBold,
+         style:textStyle ??  FontStyles.font14PrimaryBold,
       ),
     );
   }
