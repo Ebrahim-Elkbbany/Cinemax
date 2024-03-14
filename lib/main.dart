@@ -7,12 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'core/helpers/service_locator.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  await ScreenUtil.ensureScreenSize();
   await CacheHelper.init();
   setupServiceLocator();
-  await ScreenUtil.ensureScreenSize();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(const CineMaxApp());
 }
 
@@ -35,7 +37,6 @@ class CineMaxApp extends StatelessWidget {
             onGenerateRoute: AppRouter().generateRoute,
           );
         }
-
       ),
     );
   }

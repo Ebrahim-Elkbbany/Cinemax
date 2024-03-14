@@ -2,6 +2,7 @@ import 'package:cinemax/core/helpers/responsive_spacing.dart';
 
 import 'package:cinemax/core/widgets/custom_movies_list_item.dart';
 import 'package:cinemax/core/widgets/custom_movies_list_shimmer_item.dart';
+import 'package:cinemax/features/details/presentation/view/top_movies_details_view.dart';
 import 'package:cinemax/features/home/data/models/movies_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,7 +21,7 @@ class SeeAllTopMoviesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Most Popular Movies'),
+        title: const Text('Top Movies'),
       ),
       body: !isLoading
           ? ListView.separated(
@@ -28,6 +29,17 @@ class SeeAllTopMoviesView extends StatelessWidget {
               padding: EdgeInsets.only(left: 10.w, top: 20.h),
               itemCount: topMoviesList.length,
               itemBuilder: (context, index) => CustomMoviesListItem(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>  TopMovieDetailsView(
+                        title: topMoviesList[index].title,
+                        id: topMoviesList[index].id,
+                      ),
+                    ),
+                  );
+                },
                 imageUrl: topMoviesList[index].bigImage,
                 title: topMoviesList[index].title,
                 year: topMoviesList[index].year,
