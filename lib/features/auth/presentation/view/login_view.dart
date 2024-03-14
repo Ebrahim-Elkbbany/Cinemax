@@ -8,7 +8,6 @@ import 'package:cinemax/features/auth/presentation/view/widgets/don_not_have_acc
 import 'package:cinemax/features/auth/presentation/view/widgets/term_conditions_sec.dart';
 import 'package:cinemax/features/onboarding/presenattion/manager/app_theme_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:provider/provider.dart';
@@ -22,7 +21,6 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDarkTheme = Provider.of<AppThemeProvider>(context).isDarkTheme;
     var provider = Provider.of<LoginProvider>(context, listen: true);
-    Provider.of<AppThemeProvider>(context).getStatusBar();
     return ModalProgressHUD(
       inAsyncCall: provider.isLoading,
       blur: 2,

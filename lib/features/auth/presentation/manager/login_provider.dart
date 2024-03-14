@@ -7,7 +7,6 @@ import 'package:cinemax/features/auth/data/models/login_reqeust_data.dart';
 import 'package:cinemax/features/auth/data/repos/login_repo.dart';
 import 'package:flutter/material.dart';
 
-
 class LoginProvider extends ChangeNotifier {
   var passController = TextEditingController();
   var emailController = TextEditingController();
@@ -40,12 +39,14 @@ class LoginProvider extends ChangeNotifier {
         key: 'token',
         value: emailController.text,
       );
-      email =emailController.text;
+      email = emailController.text;
       customSnackBar(context1, message);
-      context.pushNamedAndRemoveUntil(
+      if (context.mounted) {
+        context.pushNamedAndRemoveUntil(
           Routes.layoutView,
-        predicate: (route) => false,
-      );
+          predicate: (route) => false,
+        );
+      }
     } else if (message == 'Incorrect password') {
       customSnackBar(context1, message);
     } else {

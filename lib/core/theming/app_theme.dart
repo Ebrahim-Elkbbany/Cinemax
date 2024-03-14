@@ -12,8 +12,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 ThemeData darkTheme = ThemeData.dark().copyWith(
   appBarTheme: AppBarTheme(
       backgroundColor: AppColors.kBackGroundColor,
-      titleTextStyle: FontStyles.font22WhiteBold,
-      centerTitle: true
+      titleTextStyle: FontStyles.font20WhiteBold,
+      centerTitle: true,
+      toolbarHeight: 60.h
   ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     selectedIconTheme: IconThemeData(size: 24.w),
@@ -32,10 +33,11 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
 ThemeData lightTheme = ThemeData.light().copyWith(
   appBarTheme: AppBarTheme(
       backgroundColor: AppColors.kSecondaryColor,
-      titleTextStyle: FontStyles.font22WhiteBold.copyWith(
+      titleTextStyle: FontStyles.font20WhiteBold.copyWith(
         color: Colors.black
       ),
-      centerTitle: true
+      centerTitle: true,
+      toolbarHeight: 60.h
   ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     selectedIconTheme: IconThemeData(size: 24.w),

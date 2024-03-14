@@ -4,10 +4,8 @@ import 'package:cinemax/core/theming/app_colors.dart';
 import 'package:cinemax/core/theming/font_styles.dart';
 import 'package:cinemax/features/onboarding/presenattion/manager/app_theme_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-
 import 'package:cinemax/core/widgets/custom_button.dart';
 import 'package:cinemax/core/widgets/custom_text_form_field.dart';
 import 'package:cinemax/features/auth/presentation/manager/register_provider.dart';
@@ -22,7 +20,6 @@ class ResisterView extends StatelessWidget {
   Widget build(BuildContext context) {
     var provider = Provider.of<RegisterProvider>(context);
     final isDarkTheme = Provider.of<AppThemeProvider>(context).isDarkTheme;
-    Provider.of<AppThemeProvider>(context).getStatusBar();
     return ModalProgressHUD(
       inAsyncCall: provider.isLoading,
       color: AppColors.kPrimaryColor,

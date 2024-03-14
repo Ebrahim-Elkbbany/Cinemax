@@ -20,7 +20,6 @@ class CineMaxApp extends StatelessWidget {
   const CineMaxApp({super.key});
 
 
-
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(

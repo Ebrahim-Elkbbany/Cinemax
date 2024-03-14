@@ -1,3 +1,4 @@
+import 'package:cinemax/core/api_service/api_keys.dart';
 import 'package:dio/dio.dart';
 
 
@@ -7,11 +8,11 @@ import 'package:dio/dio.dart';
 class ApiService {
 
   final Dio _dio;
-  final String _baseUrl = 'https://moviesverse1.p.rapidapi.com/';
+  final String _baseUrl = 'https://imdb-top-100-movies.p.rapidapi.com/';
   ApiService(this._dio);
 
 
-  Future<Map<String, dynamic>> get({
+  Future get({
     required String urlEndPoint,
     Map<String, dynamic>? queryParameters,
   }) async {
@@ -20,8 +21,8 @@ class ApiService {
       options: Options(
         receiveDataWhenStatusError: true,
         headers: {
-          // 'X-RapidAPI-Key': ApiKeys.moviesApiKey,
-          'X-RapidAPI-Host': 'moviesverse1.p.rapidapi.com',
+          'X-RapidAPI-Key': ApiKeys.moviesApiKey,
+          'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
         },
       ),
       queryParameters: queryParameters,
