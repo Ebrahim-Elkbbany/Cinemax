@@ -1,24 +1,30 @@
+import 'package:cinemax/core/api_service/constant.dart';
 import 'package:cinemax/core/helpers/responsive_spacing.dart';
 import 'package:cinemax/core/theming/app_colors.dart';
 import 'package:cinemax/core/theming/font_styles.dart';
 import 'package:cinemax/core/theming/font_weight_helper.dart';
+import 'package:cinemax/features/favourites/data/models/favourites_model.dart';
+import 'package:cinemax/features/favourites/presentation/manager/favourites_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class MoviesDetailsFirstSec extends StatelessWidget {
-  const MoviesDetailsFirstSec(
-      {super.key,
-      required this.isDarkTheme,
-      required this.controller,
-      required this.movieName, required this.description, required this.year, required this.rating});
+  const MoviesDetailsFirstSec({super.key,
+    required this.isDarkTheme,
+    required this.controller,
+    required this.movieName, required this.description, required this.year, required this.rating, required this.image, required this.sorting});
 
   final bool isDarkTheme;
   final YoutubePlayerController controller;
   final String movieName;
   final String description;
+  final String image;
   final String year;
   final String rating;
+  final List<String> sorting;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +46,10 @@ class MoviesDetailsFirstSec extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                width: MediaQuery.of(context).size.width / 1.5,
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width / 1.5,
                 child: Text(
                   movieName,
                   style: FontStyles.font20WhiteBold.copyWith(
@@ -50,7 +59,41 @@ class MoviesDetailsFirstSec extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              const Icon(Icons.bookmark_outline)
+                   ChangeNotifierProvider(
+                     create: (context) => FavouritesProvider(),
+                     child: Consumer<FavouritesProvider>(
+                      builder: (BuildContext context, FavouritesProvider value,
+                          Widget? child) {
+                        return GestureDetector(
+                          onTap: () {
+                            context.read<FavouritesProvider>()
+                                .insertFavourite(
+                              favouritesModel: FavouritesModel(
+                                title: movieName,
+                                email: email,
+                                year: year,
+                                rating: rating,
+                                image: image,
+                                isFavourite: 'true',
+                                sorting: sorting,
+                              ),
+                            );
+                          },
+                          child: Icon(
+                            context.read<FavouritesProvider>().isFavoriteProduct(
+                                movieName)
+                                ? Icons.bookmark
+                                : Icons.bookmark_outline,
+                            color:
+                            context.read<FavouritesProvider>().isFavoriteProduct(
+                                movieName)
+                                ? AppColors.kPrimaryColor
+                                : null,
+                          ),
+                        );
+                      },
+                                       ),
+                   ),
             ],
           ),
         ),
@@ -94,27 +137,28 @@ class MoviesDetailsFirstSec extends StatelessWidget {
                   child: ListView.separated(
                     separatorBuilder: (context, index) =>
                         horizontalSpacer(5),
-                    itemBuilder: (context, index) => Container(
-                      height: 25.h,
-                      width: 90.h,
-                      alignment: Alignment.center,
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 2.w, vertical: 2.h),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8.r),
-                        color: AppColors.kPrimaryColor.withOpacity(
-                          isDarkTheme ? 0.8 : 0.4,
+                    itemBuilder: (context, index) =>
+                        Container(
+                          height: 25.h,
+                          width: 90.h,
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 2.w, vertical: 2.h),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.r),
+                            color: AppColors.kPrimaryColor.withOpacity(
+                              isDarkTheme ? 0.8 : 0.4,
+                            ),
+                          ),
+                          child: Text(
+                            'Action'.toUpperCase(),
+                            style: FontStyles.font13GrayRegular.copyWith(
+                              color: isDarkTheme
+                                  ? AppColors.kSecondaryColor
+                                  : AppColors.kBackGroundColor,
+                            ),
+                          ),
                         ),
-                      ),
-                      child: Text(
-                        'Action'.toUpperCase(),
-                        style: FontStyles.font13GrayRegular.copyWith(
-                          color: isDarkTheme
-                              ? AppColors.kSecondaryColor
-                              : AppColors.kBackGroundColor,
-                        ),
-                      ),
-                    ),
                     physics: const NeverScrollableScrollPhysics(),
                     scrollDirection: Axis.horizontal,
                     itemCount: 3,

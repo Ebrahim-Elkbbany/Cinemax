@@ -20,7 +20,7 @@ class DatabaseHelper {
 
   Future<Database> initDb() async {
     final databasesPath = await getDatabasesPath();
-    final path = join(databasesPath, 'movies1.db');
+    final path = join(databasesPath, 'movies2.db');
     var theDb = await openDatabase(path,
         version: 1, onCreate: _onCreate, onUpgrade: _onUpgrade);
     return theDb;
@@ -47,7 +47,7 @@ class DatabaseHelper {
         title TEXT,
         rating TEXT,
         year TEXT,
-        timeline Text,
+        sorting Text,
         isFavourite Text,
         email Text
       )
@@ -71,7 +71,7 @@ class DatabaseHelper {
 
   deleteMyDatabase() async {
     String databasePath = await getDatabasesPath();
-    String path = join(databasePath, 'movies.db');
+    String path = join(databasePath, 'movies2.db');
     await deleteDatabase(path);
   }
 }

@@ -45,6 +45,7 @@ class MostPopularMoviesDetailsView extends StatelessWidget {
                   ? Column(
                       children: [
                         MoviesDetailsFirstSec(
+                          sorting:  value.mostPopularMoviesModel!.genre,
                           isDarkTheme: isDarkTheme,
                           controller: YoutubePlayerController(
                               initialVideoId: YoutubePlayer.convertUrlToId(
@@ -58,6 +59,8 @@ class MostPopularMoviesDetailsView extends StatelessWidget {
                           year: value.mostPopularMoviesModel!.year.toString(),
                           rating:
                               value.mostPopularMoviesModel!.rating.toString(),
+                          image:
+                              value.mostPopularMoviesModel!.bigImage.toString(),
                         ),
                         verticalSpacer(20),
                         DirectorWriterSec(
@@ -79,12 +82,12 @@ class MostPopularMoviesDetailsView extends StatelessWidget {
                             ),
                           ))
                       : Column(
-                        children: [
-                          const  MoviesDetailsFirstSecShimmer(),
-                          verticalSpacer(20),
-                          DirectorWriterShimmerSec(isDarkTheme: isDarkTheme),
-                        ],
-                      ),
+                          children: [
+                            const MoviesDetailsFirstSecShimmer(),
+                            verticalSpacer(20),
+                            DirectorWriterShimmerSec(isDarkTheme: isDarkTheme),
+                          ],
+                        ),
             ),
           ),
         ));

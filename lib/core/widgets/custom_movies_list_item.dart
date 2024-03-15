@@ -1,8 +1,11 @@
+import 'package:cinemax/core/api_service/constant.dart';
 import 'package:cinemax/core/helpers/responsive_spacing.dart';
 import 'package:cinemax/core/theming/app_colors.dart';
 import 'package:cinemax/core/theming/font_styles.dart';
 import 'package:cinemax/core/theming/font_weight_helper.dart';
 import 'package:cinemax/core/widgets/custom_cached_network_image.dart';
+import 'package:cinemax/features/favourites/data/models/favourites_model.dart';
+import 'package:cinemax/features/favourites/presentation/manager/favourites_provider.dart';
 import 'package:cinemax/features/onboarding/presenattion/manager/app_theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -42,38 +45,38 @@ class CustomMoviesListItem extends StatelessWidget {
                   width: 150.w,
                   height: 200.h,
                 ),
-                // Positioned(
-                //     top: 10.h,
-                //     right: 10.w,
-                //     child: Consumer<FavouritesProvider>(
-                //       builder: (BuildContext context, FavouritesProvider value, Widget? child) {
-                //         return GestureDetector(
-                //           onTap: () {
-                //             context.read<FavouritesProvider>()
-                //                 .insertFavourite(
-                //               favouritesModel: FavouritesModel(
-                //                   title: title,
-                //                   email: email,
-                //                   year: year,
-                //                   timeline: timeline,
-                //                   rating: rating,
-                //                   image: image,
-                //                   isFavourite: 'true'
-                //               ),
-                //             );
-                //           },
-                //           child: Icon(
-                //             context.read<FavouritesProvider>().isFavoriteProduct(title)
-                //                 ? Icons.bookmark
-                //                 : Icons.bookmark_outline,
-                //             color:
-                //             // context.read<FavouritesProvider>().isFavoriteProduct(title)
-                //             //     ? AppColors.kPrimaryColor
-                //             //     : null,
-                //           ),
-                //         );
-                //       },
-                //     )),
+                Positioned(
+                    top: 10.h,
+                    right: 10.w,
+                    child: Consumer<FavouritesProvider>(
+                      builder: (BuildContext context, FavouritesProvider value, Widget? child) {
+                        return GestureDetector(
+                          onTap: () {
+                            context.read<FavouritesProvider>()
+                                .insertFavourite(
+                              favouritesModel: FavouritesModel(
+                                  title: title,
+                                  email: email,
+                                  year: year,
+                                  rating: rating,
+                                  image: imageUrl,
+                                  isFavourite: 'true',
+                                  sorting: sorting,
+                              ),
+                            );
+                          },
+                          child: Icon(
+                            context.read<FavouritesProvider>().isFavoriteProduct(title)
+                                ? Icons.bookmark
+                                : Icons.bookmark_outline,
+                            color:
+                            context.read<FavouritesProvider>().isFavoriteProduct(title)
+                                ? AppColors.kPrimaryColor
+                                : null,
+                          ),
+                        );
+                      },
+                    )),
               ],
             ),
           ),
@@ -149,7 +152,7 @@ class CustomMoviesListItem extends StatelessWidget {
                     ),
                     physics: const NeverScrollableScrollPhysics(),
                     scrollDirection: Axis.horizontal,
-                    itemCount: sorting.length > 1 ? 2 : 1,
+                    itemCount: sorting.isEmpty ? 0:sorting.length > 1 ? 2 : 1,
                   )),
             ],
           ),

@@ -1,9 +1,12 @@
+import 'package:cinemax/core/api_service/constant.dart';
 import 'package:cinemax/core/helpers/responsive_spacing.dart';
 import 'package:cinemax/core/theming/app_colors.dart';
 import 'package:cinemax/core/theming/font_styles.dart';
 import 'package:cinemax/core/widgets/custom_button.dart';
 import 'package:cinemax/core/widgets/custom_cached_network_image.dart';
 import 'package:cinemax/features/details/presentation/view/top_movies_details_view.dart';
+import 'package:cinemax/features/favourites/data/models/favourites_model.dart';
+import 'package:cinemax/features/favourites/presentation/manager/favourites_provider.dart';
 import 'package:cinemax/features/home/presentation/manager/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -83,6 +86,20 @@ class ImagePageViewSec extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   CustomButton(
+                    onPressed: () {
+                      context.read<FavouritesProvider>()
+                          .insertFavourite(
+                        favouritesModel: FavouritesModel(
+                          title: provider.topMoviesList[provider.index].title,
+                          email: email,
+                          year: provider.topMoviesList[provider.index].year,
+                          rating: provider.topMoviesList[provider.index].rating.toString(),
+                          image: provider.topMoviesList[provider.index].bigImage,
+                          isFavourite: 'true',
+                          sorting: provider.topMoviesList[provider.index].genre,
+                        ),
+                      );
+                    },
                     color: const Color(0xFF333333),
                     buttonName: '+  Wishlist',
                     width: 155.w,
