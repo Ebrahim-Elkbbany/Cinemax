@@ -1,6 +1,6 @@
 import 'package:cinemax/core/theming/font_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:cinemax/features/onboarding/presenattion/manager/app_theme_provider.dart';
+import 'package:cinemax/features/profile/presentation/manager/app_theme_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../core/theming/app_colors.dart';

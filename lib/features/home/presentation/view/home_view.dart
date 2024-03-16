@@ -3,7 +3,7 @@ import 'package:cinemax/features/favourites/presentation/manager/favourites_prov
 import 'package:cinemax/features/home/presentation/view/widgets/image_page_view_sec.dart';
 import 'package:cinemax/features/home/presentation/view/widgets/most_popular_movies_sec.dart';
 import 'package:cinemax/features/home/presentation/view/widgets/top_movies_list_view.dart';
-import 'package:cinemax/features/onboarding/presenattion/manager/app_theme_provider.dart';
+import 'package:cinemax/features/profile/presentation/manager/app_theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

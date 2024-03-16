@@ -76,17 +76,23 @@ class TopMoviesListView extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 20),
               )
             : provider.topMoviesError != null
-                ? SizedBox(
-                    height: 300.h,
-                    child: Text(
-                      provider.topMoviesError!,
-                      style: FontStyles.font18whiteMedium.copyWith(
-                        color: isDarkTheme
-                            ? null
-                            : Colors.black.withOpacity(0.20000000298023224),
+                ? Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: SizedBox(
+                      height: 300.h,
+                      child: Center(
+                        child: Text(
+                          provider.topMoviesError!,
+                          style: FontStyles.font18whiteMedium.copyWith(
+                            color: isDarkTheme
+                                ? null
+                                : Colors.black.withOpacity(0.20000000298023224),
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     ),
-                  )
+                )
                 : const CustomMoviesListShimmer(),
       ],
     );

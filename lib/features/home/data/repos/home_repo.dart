@@ -22,7 +22,6 @@ class HomeRepo {
       if (e is DioException) {
         return left(ServerFailure.fromDioException(e));
       } else {
-    
         return Left(ServerFailure(e.toString()));
       }
     }

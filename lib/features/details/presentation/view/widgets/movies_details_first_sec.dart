@@ -6,7 +6,6 @@ import 'package:cinemax/core/theming/font_weight_helper.dart';
 import 'package:cinemax/features/favourites/data/models/favourites_model.dart';
 import 'package:cinemax/features/favourites/presentation/manager/favourites_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
@@ -60,7 +59,7 @@ class MoviesDetailsFirstSec extends StatelessWidget {
               ),
               const Spacer(),
                    ChangeNotifierProvider(
-                     create: (context) => FavouritesProvider(),
+                     create: (context) => FavouritesProvider()..getFavourite(),
                      child: Consumer<FavouritesProvider>(
                       builder: (BuildContext context, FavouritesProvider value,
                           Widget? child) {

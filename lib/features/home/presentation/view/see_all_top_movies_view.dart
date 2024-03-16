@@ -29,31 +29,32 @@ class SeeAllTopMoviesView extends StatelessWidget {
           ? ChangeNotifierProvider(
               create: (context) => FavouritesProvider()..getFavourite(),
               child: Consumer<FavouritesProvider>(
-                  builder: (context, value, child) {
-                return ListView.separated(
-                  separatorBuilder: (context, index) => verticalSpacer(15),
-                  padding: EdgeInsets.only(left: 10.w, top: 20.h),
-                  itemCount: topMoviesList.length,
-                  itemBuilder: (context, index) => CustomMoviesListItem(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => TopMovieDetailsView(
-                            title: topMoviesList[index].title,
-                            id: topMoviesList[index].id,
+                builder: (context, value, child) {
+                  return ListView.separated(
+                    separatorBuilder: (context, index) => verticalSpacer(15),
+                    padding: EdgeInsets.only(left: 10.w, top: 20.h),
+                    itemCount: topMoviesList.length,
+                    itemBuilder: (context, index) => CustomMoviesListItem(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => TopMovieDetailsView(
+                              title: topMoviesList[index].title,
+                              id: topMoviesList[index].id,
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                    imageUrl: topMoviesList[index].bigImage,
-                    title: topMoviesList[index].title,
-                    year: topMoviesList[index].year,
-                    rating: topMoviesList[index].rating.toString(),
-                    sorting: topMoviesList[index].genre,
-                  ),
-                );
-              }),
+                        );
+                      },
+                      imageUrl: topMoviesList[index].bigImage,
+                      title: topMoviesList[index].title,
+                      year: topMoviesList[index].year,
+                      rating: topMoviesList[index].rating.toString(),
+                      sorting: topMoviesList[index].genre,
+                    ),
+                  );
+                },
+              ),
             )
           : const CustomMoviesListShimmer(),
     );

@@ -6,7 +6,7 @@ import 'package:cinemax/core/theming/font_weight_helper.dart';
 import 'package:cinemax/core/widgets/custom_cached_network_image.dart';
 import 'package:cinemax/features/favourites/data/models/favourites_model.dart';
 import 'package:cinemax/features/favourites/presentation/manager/favourites_provider.dart';
-import 'package:cinemax/features/onboarding/presenattion/manager/app_theme_provider.dart';
+import 'package:cinemax/features/profile/presentation/manager/app_theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';

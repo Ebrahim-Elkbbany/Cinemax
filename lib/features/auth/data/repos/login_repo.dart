@@ -1,5 +1,5 @@
 import 'package:cinemax/core/helpers/database_helper.dart';
-import 'package:cinemax/features/auth/data/models/login_reqeust_data.dart';
+import 'package:cinemax/features/auth/data/models/login_reqeust_model.dart';
 
 class LoginRepo {
   static Future<Map<String, dynamic>?> getUserByEmail(String email) async {

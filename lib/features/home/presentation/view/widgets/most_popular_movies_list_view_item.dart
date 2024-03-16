@@ -30,10 +30,11 @@ class MostPopularMoviesListViewItem extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => MostPopularMoviesDetailsView(
-                    id: mostPopularMoviesList[index].id,
-                    title: mostPopularMoviesList[index].title,
-                  )),
+            builder: (context) => MostPopularMoviesDetailsView(
+              id: mostPopularMoviesList[index].id,
+              title: mostPopularMoviesList[index].title,
+            ),
+          ),
         );
       },
       child: SizedBox(
@@ -52,49 +53,45 @@ class MostPopularMoviesListViewItem extends StatelessWidget {
                     width: 150.w,
                   ),
                   Positioned(
-                      top: 10.h,
-                      right: 10.w,
-                      child: Consumer<FavouritesProvider>(
-                        builder: (BuildContext context,
-                            FavouritesProvider value, Widget? child) {
-                          return GestureDetector(
-                            onTap: () {
-                              context
-                                  .read<FavouritesProvider>()
-                                  .insertFavourite(
-                                    favouritesModel: FavouritesModel(
-                                        title:
-                                            mostPopularMoviesList[index].title,
-                                        email: email,
-                                        year: mostPopularMoviesList[index]
-                                            .year
-                                            .toString(),
-                                        rating:
-                                            mostPopularMoviesList[index].rating,
-                                        image:
-                                            mostPopularMoviesList[index].image,
-                                        isFavourite: 'true',
-                                        sorting:
-                                            mostPopularMoviesList[index].genre),
-                                  );
-                            },
-                            child: Icon(
-                              context
-                                      .read<FavouritesProvider>()
-                                      .isFavoriteProduct(
-                                          mostPopularMoviesList[index].title)
-                                  ? Icons.bookmark
-                                  : Icons.bookmark_outline,
-                              color: context
-                                      .read<FavouritesProvider>()
-                                      .isFavoriteProduct(
-                                          mostPopularMoviesList[index].title)
-                                  ? AppColors.kPrimaryColor
-                                  : null,
-                            ),
-                          );
-                        },
-                      )),
+                    top: 10.h,
+                    right: 10.w,
+                    child: Consumer<FavouritesProvider>(
+                      builder: (BuildContext context, FavouritesProvider value,
+                          Widget? child) {
+                        return GestureDetector(
+                          onTap: () {
+                            context.read<FavouritesProvider>().insertFavourite(
+                                  favouritesModel: FavouritesModel(
+                                    title: mostPopularMoviesList[index].title,
+                                    email: email,
+                                    year: mostPopularMoviesList[index]
+                                        .year
+                                        .toString(),
+                                    rating: mostPopularMoviesList[index].rating,
+                                    image: mostPopularMoviesList[index].image,
+                                    isFavourite: 'true',
+                                    sorting: mostPopularMoviesList[index].genre,
+                                  ),
+                                );
+                          },
+                          child: Icon(
+                            context
+                                    .read<FavouritesProvider>()
+                                    .isFavoriteProduct(
+                                        mostPopularMoviesList[index].title)
+                                ? Icons.bookmark
+                                : Icons.bookmark_outline,
+                            color: context
+                                    .read<FavouritesProvider>()
+                                    .isFavoriteProduct(
+                                        mostPopularMoviesList[index].title)
+                                ? AppColors.kPrimaryColor
+                                : null,
+                          ),
+                        );
+                      },
+                    ),
+                  ),
                 ],
               ),
             ),
