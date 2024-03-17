@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-class AppTextFormField extends StatelessWidget {
+class CustomTextFormField extends StatelessWidget {
   final EdgeInsetsGeometry? contentPadding;
   final InputBorder? focusedBorder;
   final InputBorder? enabledBorder;
@@ -18,8 +18,9 @@ class AppTextFormField extends StatelessWidget {
   final TextEditingController? controller;
   final Function(String?) validator;
   final Function()? suffixIconTap;
+  final void Function(String)? onChange;
 
-  const AppTextFormField({
+  const CustomTextFormField({
     super.key,
     this.contentPadding,
     this.focusedBorder,
@@ -32,7 +33,7 @@ class AppTextFormField extends StatelessWidget {
     this.backgroundColor,
     this.controller,
     required this.validator,
-    this.suffixIconTap,
+    this.suffixIconTap, this.onChange,
   });
 
   @override
@@ -40,6 +41,7 @@ class AppTextFormField extends StatelessWidget {
     final isDarkTheme = Provider.of<AppThemeProvider>(context).isDarkTheme;
 
     return TextFormField(
+       onChanged: onChange,
       cursorColor: AppColors.kPrimaryColor,
       controller: controller,
       decoration: InputDecoration(

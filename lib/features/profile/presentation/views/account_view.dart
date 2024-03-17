@@ -19,27 +19,26 @@ class AccountEditingView extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 23.w),
-          child: Form(
-            key: context.read<AccountEditingProvider>().formKey,
-            child: Column(
-              children: [
-                verticalSpacer(40),
-                const AccountViewTextFieldsSec(),
-                verticalSpacer(30),
-                Consumer<AccountEditingProvider>(
-                  builder: (context, value, child) {
-                    return CustomButton(
-                      buttonName: "Save changes",
-                      onPressed: () {
+          child: Column(
+            children: [
+              verticalSpacer(40),
+              const AccountViewTextFieldsSec(),
+              verticalSpacer(30),
+              Consumer<AccountEditingProvider>(
+                builder: (context, value, child) {
+                  return CustomButton(
+                    buttonName: "Save changes",
+                    onPressed: () {
+                      if( context.read<AccountEditingProvider>().formKey.currentState!.validate()){
                         context
                             .read<AccountEditingProvider>()
                             .updateUserData(context);
-                      },
-                    );
-                  },
-                )
-              ],
-            ),
+                      }
+                    },
+                  );
+                },
+              )
+            ],
           ),
         ),
       ),
