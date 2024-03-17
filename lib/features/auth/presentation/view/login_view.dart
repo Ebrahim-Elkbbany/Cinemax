@@ -49,7 +49,7 @@ class LoginView extends StatelessWidget {
                     ),
                   ),
                   verticalSpacer(36),
-                  AppTextFormField(
+                  CustomTextFormField(
                     controller: provider.emailController,
                     hintText: 'Email',
                     validator: (value) {
@@ -61,7 +61,7 @@ class LoginView extends StatelessWidget {
                     },
                   ),
                   verticalSpacer(20),
-                  AppTextFormField(
+                  CustomTextFormField(
                     controller: provider.passController,
                     suffixIcon: provider.isPassword
                         ? Icons.visibility_off

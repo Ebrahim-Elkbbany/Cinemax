@@ -11,47 +11,50 @@ class AccountViewTextFieldsSec extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const CustomTextFieldName(name: 'First Name'),
-        AppTextFormField(
-          controller:
-          context.read<AccountEditingProvider>().fNameController,
-          hintText: 'First Name',
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'This field is required';
-            }
-          },
-        ),
-        verticalSpacer(5),
-        const CustomTextFieldName(name: 'LastName'),
-        AppTextFormField(
-          controller:
-          context.read<AccountEditingProvider>().sNameController,
-          hintText: 'Last Name',
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'This field is required';
-            }
-          },
-        ),
-        verticalSpacer(5),
-        const CustomTextFieldName(name: 'Email'),
-        AppTextFormField(
-          controller:
-          context.read<AccountEditingProvider>().emailController,
-          hintText: 'Email',
-          validator: (value) {
-            if (value == null ||
-                value.isEmpty ||
-                !AppRegex.isEmailValid(value)) {
-              return 'Please enter a valid email';
-            }
-          },
-        ),
+    return Form(
+      key: context.read<AccountEditingProvider>().formKey,
+      child: Column(
+        children: [
+          const CustomTextFieldName(name: 'First Name'),
+          CustomTextFormField(
+            controller:
+            context.read<AccountEditingProvider>().fNameController,
+            hintText: 'First Name',
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'This field is required';
+              }
+            },
+          ),
+          verticalSpacer(5),
+          const CustomTextFieldName(name: 'LastName'),
+          CustomTextFormField(
+            controller:
+            context.read<AccountEditingProvider>().sNameController,
+            hintText: 'Last Name',
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'This field is required';
+              }
+            },
+          ),
+          verticalSpacer(5),
+          const CustomTextFieldName(name: 'Email'),
+          CustomTextFormField(
+            controller:
+            context.read<AccountEditingProvider>().emailController,
+            hintText: 'Email',
+            validator: (value) {
+              if (value == null ||
+                  value.isEmpty ||
+                  !AppRegex.isEmailValid(value)) {
+                return 'Please enter a valid email';
+              }
+            },
+          ),
 
-      ],
+        ],
+      ),
     );
   }
 }

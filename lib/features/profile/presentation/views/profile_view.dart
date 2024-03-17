@@ -1,5 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cinemax/core/helpers/cache_helper.dart';
+import 'package:cinemax/core/helpers/extensions.dart';
 import 'package:cinemax/core/helpers/responsive_spacing.dart';
 import 'package:cinemax/core/routing/routes.dart';
 import 'package:cinemax/core/widgets/custom_button.dart';
@@ -40,7 +41,7 @@ class ProfileView extends StatelessWidget {
         ));
   }
 
-  void logoutDialog(context){
+  void logoutDialog(BuildContext context){
     AwesomeDialog(
       context: context,
       title: 'Are you sure you want to logout ?',

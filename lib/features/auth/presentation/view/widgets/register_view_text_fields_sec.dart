@@ -13,7 +13,7 @@ class RegisterViewTextFields extends StatelessWidget {
     var provider = Provider.of<RegisterProvider>(context);
     return Column(
       children: [
-        AppTextFormField(
+        CustomTextFormField(
           controller: provider.fNameController,
           hintText: 'First Name',
           validator: (value) {
@@ -23,7 +23,7 @@ class RegisterViewTextFields extends StatelessWidget {
           },
         ),
         verticalSpacer(20),
-        AppTextFormField(
+        CustomTextFormField(
           controller: provider.sNameController,
           hintText: 'Last Name',
           validator: (value) {
@@ -33,7 +33,7 @@ class RegisterViewTextFields extends StatelessWidget {
           },
         ),
         verticalSpacer(20),
-        AppTextFormField(
+        CustomTextFormField(
           controller: provider.emailController,
           hintText: 'Email',
           validator: (value) {
@@ -45,7 +45,7 @@ class RegisterViewTextFields extends StatelessWidget {
           },
         ),
         verticalSpacer(20),
-        AppTextFormField(
+        CustomTextFormField(
           controller: provider.passController,
           hintText: 'Password',
           suffixIcon: provider.isPassword
@@ -60,7 +60,7 @@ class RegisterViewTextFields extends StatelessWidget {
           },
         ),
         verticalSpacer(20),
-        AppTextFormField(
+        CustomTextFormField(
           controller: provider.confirmPassController,
           hintText: 'Confirm Password',
           isObscureText: provider.isPassword,
