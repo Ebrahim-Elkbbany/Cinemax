@@ -31,7 +31,7 @@ class HomeProvider extends ChangeNotifier {
     topMoviesIsLoadingChange(true);
     var response = await homeRepo.fetchTopMoviesMovies();
     response.fold((error) {
-      topMoviesError = error.toString();
+      topMoviesError = error.errorMessage.toString();
       topMoviesIsLoadingChange(false);
       notifyListeners();
     }, (topMovies) {
@@ -44,7 +44,7 @@ class HomeProvider extends ChangeNotifier {
     mostPopularMoviesIsLoadingChange(true);
     var response = await homeRepo.fetchMostPopularMovies();
     response.fold((error) {
-      mostPopularMoviesError = error.toString();
+      mostPopularMoviesError = error.errorMessage.toString();
       mostPopularMoviesIsLoadingChange(false);
       notifyListeners();
     }, (mostPopularMovies) {

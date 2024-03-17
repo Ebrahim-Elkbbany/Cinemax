@@ -16,16 +16,13 @@ class CustomCachedNetworkImage extends StatelessWidget {
       height: height,
       child: CachedNetworkImage(
         errorWidget: (context, url, error) {
-          return Column(
+          return   Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Icon(Icons.error),
-              Text(
-                'ERROR',
-                style: TextStyle(
-                  fontSize: 14.sp,
-                ),
-              ),
+              Text('ERROR',style: TextStyle(
+          fontSize: 14.sp,
+          ),),
             ],
           );
         },

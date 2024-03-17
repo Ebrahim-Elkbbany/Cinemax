@@ -1,4 +1,3 @@
-import 'package:cinemax/core/api_service/constant.dart';
 import 'package:cinemax/core/helpers/cache_helper.dart';
 import 'package:cinemax/core/widgets/custom_snackbar.dart';
 import 'package:cinemax/features/auth/data/models/register_request_model.dart';
@@ -50,7 +49,6 @@ class RegisterProvider extends ChangeNotifier {
         key: 'token',
         value: emailController.text,
       );
-      email = emailController.text;
       isLoadingChange(false);
       notifyListeners();
     }

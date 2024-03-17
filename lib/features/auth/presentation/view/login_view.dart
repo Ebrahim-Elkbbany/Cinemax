@@ -6,7 +6,7 @@ import 'package:cinemax/core/widgets/custom_button.dart';
 import 'package:cinemax/core/widgets/custom_text_form_field.dart';
 import 'package:cinemax/features/auth/presentation/view/widgets/don_not_have_account_sec.dart';
 import 'package:cinemax/features/auth/presentation/view/widgets/term_conditions_sec.dart';
-import 'package:cinemax/features/onboarding/presenattion/manager/app_theme_provider.dart';
+import 'package:cinemax/features/profile/presentation/manager/app_theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -43,8 +43,9 @@ class LoginView extends StatelessWidget {
                   Text(
                     'We\'re excited to have you back, can\'t wait to see what you\'ve been up to since you last logged in.',
                     style: FontStyles.font14GrayRegular.copyWith(
-                      color: isDarkTheme ? Colors.grey :AppColors.kBackGroundColor,
-
+                      color: isDarkTheme
+                          ? Colors.grey
+                          : AppColors.kBackGroundColor,
                     ),
                   ),
                   verticalSpacer(36),
@@ -74,21 +75,19 @@ class LoginView extends StatelessWidget {
                       }
                     },
                   ),
-                  verticalSpacer(
-                    24,
-                  ),
+                  verticalSpacer(24),
                   Align(
                     alignment: Alignment.centerRight,
                     child: Text(
                       'Forget Password?',
                       style: FontStyles.font14GraySemiBold.copyWith(
-                        color: isDarkTheme ? Colors.white70 :AppColors.kBackGroundColor,
+                        color: isDarkTheme
+                            ? Colors.white70
+                            : AppColors.kBackGroundColor,
                       ),
                     ),
                   ),
-                  verticalSpacer(
-                    35,
-                  ),
+                  verticalSpacer(35),
                   CustomButton(
                     buttonName: 'Login',
                     onPressed: () async {
@@ -99,9 +98,7 @@ class LoginView extends StatelessWidget {
                   ),
                   verticalSpacer(20),
                   const TermConditionsSec(),
-                  verticalSpacer(
-                    60,
-                  ),
+                  verticalSpacer(60),
                   const DonNotHaveAccountSec(),
                 ],
               ),

@@ -3,7 +3,7 @@ import 'package:cinemax/core/helpers/cache_helper.dart';
 import 'package:cinemax/core/helpers/extensions.dart';
 import 'package:cinemax/core/routing/routes.dart';
 import 'package:cinemax/core/widgets/custom_snackbar.dart';
-import 'package:cinemax/features/auth/data/models/login_reqeust_data.dart';
+import 'package:cinemax/features/auth/data/models/login_reqeust_model.dart';
 import 'package:cinemax/features/auth/data/repos/login_repo.dart';
 import 'package:flutter/material.dart';
 
@@ -39,7 +39,7 @@ class LoginProvider extends ChangeNotifier {
         key: 'token',
         value: emailController.text,
       );
-      email = emailController.text;
+     email = CacheHelper.getData(key: 'token');
       customSnackBar(context1, message);
       if (context.mounted) {
         context.pushNamedAndRemoveUntil(

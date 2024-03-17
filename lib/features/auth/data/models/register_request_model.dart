@@ -16,4 +16,13 @@ class RegisterRequestModel{
        'confirmPassword' :confirmPassword
      };
   }
+
+
+  factory RegisterRequestModel.fromJson(Map<String, dynamic> json) => RegisterRequestModel(
+    firstName: json["firstName"],
+    lastName: json["lastName"],
+    email: json["email"],
+    password: json["password"],
+    confirmPassword: json["confirmPassword"],
+  );
 }

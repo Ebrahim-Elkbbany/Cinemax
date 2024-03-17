@@ -65,7 +65,6 @@ class MostPopularMoviesSec extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) =>
                         MostPopularMoviesListViewItem(
-
                       mostPopularMoviesList: provider.mostPopularMoviesList,
                       index: index,
                       isDarkTheme: isDarkTheme,

@@ -4,9 +4,15 @@ import 'package:cinemax/core/routing/routes.dart';
 import 'package:cinemax/features/auth/presentation/manager/login_provider.dart';
 import 'package:cinemax/features/auth/presentation/manager/register_provider.dart';
 import 'package:cinemax/features/auth/presentation/view/login_view.dart';
+import 'package:cinemax/features/favourites/presentation/manager/favourites_provider.dart';
+import 'package:cinemax/features/favourites/presentation/view/favourites_view.dart';
 import 'package:cinemax/features/home/data/repos/home_repo.dart';
 import 'package:cinemax/features/home/presentation/manager/home_provider.dart';
 import 'package:cinemax/features/layout/layout_view.dart';
+import 'package:cinemax/features/profile/presentation/manager/account_editing_provider.dart';
+import 'package:cinemax/features/profile/presentation/views/account_view.dart';
+import 'package:cinemax/features/profile/presentation/views/language_view.dart';
+import 'package:cinemax/features/profile/presentation/views/them_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../features/auth/presentation/view/register_view.dart';
@@ -35,6 +41,12 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const OnboardingView(),
         );
+      case Routes.favoritesView:
+        return MaterialPageRoute(
+          builder: (context) => ChangeNotifierProvider(
+              create: (context) => FavouritesProvider()..getFavourite(),
+              child: const FavouritesView()),
+        );
       case Routes.layoutView:
         return MaterialPageRoute(
           builder: (context) => const LayoutView(),
@@ -62,6 +74,21 @@ class AppRouter {
               ..getTopMovies()
               ..getMostPopularMovies(),
           ),
+        );
+      case Routes.languageView:
+        return MaterialPageRoute(
+          builder: (context) => const LanguageView(),
+        );
+      case Routes.accountEditingView:
+        return MaterialPageRoute(
+          builder: (context) => ChangeNotifierProvider<AccountEditingProvider>(
+            create: (context) => AccountEditingProvider()..getUserData(),
+            child: const AccountEditingView(),
+          ),
+        );
+      case Routes.themeView:
+        return MaterialPageRoute(
+          builder: (context) => const ThemeView(),
         );
       default:
         return MaterialPageRoute(

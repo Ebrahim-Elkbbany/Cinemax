@@ -7,7 +7,7 @@ import 'package:cinemax/features/details/presentation/view/widgets/director_writ
 import 'package:cinemax/features/details/presentation/view/widgets/director_writer_shimmer_sec.dart';
 import 'package:cinemax/features/details/presentation/view/widgets/movies_details_first_sec.dart';
 import 'package:cinemax/features/details/presentation/view/widgets/movies_details_shimmer.dart';
-import 'package:cinemax/features/onboarding/presenattion/manager/app_theme_provider.dart';
+import 'package:cinemax/features/profile/presentation/manager/app_theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';

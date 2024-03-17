@@ -34,7 +34,7 @@ class ImagePageViewSec extends StatelessWidget {
               itemBuilder: (context, index) {
                 provider.index= index;
                return CustomCachedNetworkImage(
-                  imageUrl: provider.topMoviesList[index].bigImage,
+                  imageUrl: provider.topMoviesList.isNotEmpty ?provider.topMoviesList[index].bigImage :"0",
                   width: double.infinity,
                   height: 500.h,
                 );
