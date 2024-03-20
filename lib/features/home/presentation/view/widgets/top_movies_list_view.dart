@@ -1,3 +1,4 @@
+import 'package:cinemax/core/helpers/navigate_to.dart';
 import 'package:cinemax/core/helpers/responsive_spacing.dart';
 import 'package:cinemax/core/theming/font_styles.dart';
 import 'package:cinemax/core/widgets/custom_movies_list_item.dart';
@@ -26,7 +27,7 @@ class TopMoviesListView extends StatelessWidget {
           children: [
             horizontalSpacer(20),
             Text(
-              'Top Movies',
+              'Top Series',
               style: FontStyles.font20WhiteBold.copyWith(
                 fontWeight: FontWeight.w600,
                 color: isDarkTheme ? null : AppColors.kBackGroundColor,
@@ -36,13 +37,13 @@ class TopMoviesListView extends StatelessWidget {
             CustomTextButton(
               text: 'See more',
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => SeeAllTopMoviesView(
-                              isLoading: provider.topMoviesIsLoading,
-                              topMoviesList: provider.topMoviesList,
-                            )));
+                navigateTo(
+                  context,
+                  SeeAllTopMoviesView(
+                    isLoading: provider.topMoviesIsLoading,
+                    topMoviesList: provider.topMoviesList,
+                  ),
+                );
               },
             ),
             horizontalSpacer(20),
@@ -58,7 +59,7 @@ class TopMoviesListView extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => TopMovieDetailsView(
-                          title:  provider.topMoviesList[index].title,
+                          title: provider.topMoviesList[index].title,
                           id: provider.topMoviesList[index].id,
                         ),
                       ),
@@ -77,8 +78,8 @@ class TopMoviesListView extends StatelessWidget {
               )
             : provider.topMoviesError != null
                 ? Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: SizedBox(
+                    padding: const EdgeInsets.all(20),
+                    child: SizedBox(
                       height: 300.h,
                       child: Center(
                         child: Text(
@@ -92,7 +93,7 @@ class TopMoviesListView extends StatelessWidget {
                         ),
                       ),
                     ),
-                )
+                  )
                 : const CustomMoviesListShimmer(),
       ],
     );

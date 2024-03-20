@@ -2,8 +2,8 @@ import 'package:cinemax/core/api_service/constant.dart';
 import 'package:cinemax/core/helpers/database_helper.dart';
 import 'package:cinemax/features/favourites/data/models/favourites_model.dart';
 import 'package:flutter/material.dart';
-
 import 'package:sqflite/sqflite.dart';
+
 
 class FavouritesProvider extends ChangeNotifier {
   List<Map<String, Object?>>? favouritesList;

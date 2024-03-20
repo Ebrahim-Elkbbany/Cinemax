@@ -30,7 +30,7 @@ class OnboardingView extends StatelessWidget {
               verticalSpacer(20),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 2.w),
-                child: Text('Welcome to our Movies App!',
+                child: Text('Welcome to Cinemax App!',
                     style: FontStyles.font25whiteMedium.copyWith(
                       color: appTheme
                           ? AppColors.kSecondaryColor

@@ -1,3 +1,4 @@
+import 'package:cinemax/core/helpers/navigate_to.dart';
 import 'package:cinemax/core/helpers/responsive_spacing.dart';
 import 'package:cinemax/core/theming/app_colors.dart';
 import 'package:cinemax/core/theming/font_styles.dart';
@@ -9,7 +10,6 @@ import 'package:cinemax/features/home/presentation/view/widgets/most_popular_shi
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-
 
 class MostPopularMoviesSec extends StatelessWidget {
   const MostPopularMoviesSec({
@@ -31,7 +31,7 @@ class MostPopularMoviesSec extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                'Most Popular',
+                'Popular Movies',
                 style: FontStyles.font20WhiteBold.copyWith(
                   fontWeight: FontWeight.w600,
                   color: isDarkTheme ? null : AppColors.kBackGroundColor,
@@ -41,14 +41,13 @@ class MostPopularMoviesSec extends StatelessWidget {
               CustomTextButton(
                 text: 'See more',
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => SeeAllMostPopularMoviesView(
-                                mostPopularMoviesList:
-                                    provider.mostPopularMoviesList,
-                                isLoading: provider.mostPopularMoviesIsLoading,
-                              )));
+                  navigateTo(
+                    context,
+                    SeeAllMostPopularMoviesView(
+                      mostPopularMoviesList: provider.mostPopularMoviesList,
+                      isLoading: provider.mostPopularMoviesIsLoading,
+                    ),
+                  );
                 },
               ),
               horizontalSpacer(20),

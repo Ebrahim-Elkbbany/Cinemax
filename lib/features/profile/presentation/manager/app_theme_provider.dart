@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class AppThemeProvider extends ChangeNotifier{
-  bool isDarkTheme=CacheHelper.getData(key: 'isDarkTheme');
+  bool isDarkTheme=CacheHelper.getData(key: 'isDarkTheme') ?? true;
 
   void changeTheme(){
     isDarkTheme = !isDarkTheme;
@@ -20,6 +20,4 @@ class AppThemeProvider extends ChangeNotifier{
         SystemUiOverlayStyle.dark.copyWith(statusBarColor: Colors.white));
   }
 
- }
-
-
+}
