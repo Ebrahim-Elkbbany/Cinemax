@@ -1,3 +1,4 @@
+import 'package:cinemax/core/helpers/custom_lunch_url.dart';
 import 'package:cinemax/core/helpers/extensions.dart';
 import 'package:cinemax/features/profile/presentation/views/widgets/custom_row_service_container.dart';
 import 'package:flutter/material.dart';
@@ -22,10 +23,10 @@ class ProfileSecondContainerSec extends StatelessWidget {
         children: [
           CustomRowServiceContainer(
             onPressed: () {
-              context.pushNamed(Routes.accountEditingView);
+              context.pushNamed(Routes.changePassView);
             },
-            name: "Your account",
-            iconName: Icons.person_2_outlined,
+            name: "Change Password",
+            iconName: Icons.password_sharp,
           ),
           CustomRowServiceContainer(
             onPressed: () {
@@ -47,6 +48,13 @@ class ProfileSecondContainerSec extends StatelessWidget {
             },
             name: "Language",
             iconName: Icons.language_outlined,
+          ),
+          CustomRowServiceContainer(
+            onPressed: () {
+              customLunchUrl(context, 'https://www.linkedin.com/in/ebrahim-elkbbany-4b2374213/');
+            },
+            name: "Contact us",
+            iconName: Icons.email,
           ),
           CustomRowServiceContainer(
             isLast: true,

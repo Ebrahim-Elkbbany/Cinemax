@@ -12,7 +12,7 @@ class AccountViewTextFieldsSec extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: context.read<AccountEditingProvider>().formKey,
+      key: context.read<AccountEditingProvider>().accountFormKey,
       child: Column(
         children: [
           const CustomTextFieldName(name: 'First Name'),
