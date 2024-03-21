@@ -21,13 +21,22 @@ class AccountEditingRepo {
     return registerRequestModel;
   }
 
-  static Future updateUserData(RegisterRequestModel registerRequestModel) async {
+  static Future updateUserData(
+      {required String email, required String firstName, required String lastName}) async {
     final db = await DatabaseHelper().db;
     await db?.update('users',{
-      'email':registerRequestModel.email,
-      'firstName' :registerRequestModel.firstName,
-      'lastName': registerRequestModel.lastName,
-      'password' :registerRequestModel.password,
+      'email':email,
+      'firstName' :firstName,
+      'lastName': lastName,
+    }, where: 'email = ?',
+        whereArgs: [email]);
+  }
+  static Future updatePassword(
+      {required String password, required String confirmPassword}) async {
+    final db = await DatabaseHelper().db;
+    await db?.update('users',{
+      'password':password,
+      'confirmPassword' :confirmPassword,
     }, where: 'email = ?',
         whereArgs: [email]);
   }

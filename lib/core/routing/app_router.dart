@@ -11,6 +11,7 @@ import 'package:cinemax/features/home/presentation/manager/home_provider.dart';
 import 'package:cinemax/features/layout/layout_view.dart';
 import 'package:cinemax/features/profile/presentation/manager/account_editing_provider.dart';
 import 'package:cinemax/features/profile/presentation/views/account_view.dart';
+import 'package:cinemax/features/profile/presentation/views/change_pass_view.dart';
 import 'package:cinemax/features/profile/presentation/views/language_view.dart';
 import 'package:cinemax/features/profile/presentation/views/them_view.dart';
 import 'package:flutter/material.dart';
@@ -84,6 +85,13 @@ class AppRouter {
           builder: (context) => ChangeNotifierProvider<AccountEditingProvider>(
             create: (context) => AccountEditingProvider()..getUserData(),
             child: const AccountEditingView(),
+          ),
+        );
+      case Routes.changePassView:
+        return MaterialPageRoute(
+          builder: (context) => ChangeNotifierProvider<AccountEditingProvider>(
+            create: (context) => AccountEditingProvider()..getUserData(),
+            child: const ChangePassView(),
           ),
         );
       case Routes.themeView:

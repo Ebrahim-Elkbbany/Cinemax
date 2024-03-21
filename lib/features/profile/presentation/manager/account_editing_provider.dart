@@ -10,28 +10,43 @@ class AccountEditingProvider extends ChangeNotifier {
   var passController = TextEditingController();
   var confirmPassController = TextEditingController();
   var emailController = TextEditingController();
-  var formKey = GlobalKey<FormState>();
+  var accountFormKey = GlobalKey<FormState>();
+  var passFormKey = GlobalKey<FormState>();
+  bool isPassword = true;
+
+  void isPasswordChange() {
+    isPassword = !isPassword;
+    notifyListeners();
+  }
 
   Future getUserData() async {
     final userData = await AccountEditingRepo.fetchUserData();
     fNameController.text = userData.firstName;
     sNameController.text = userData.lastName;
-    passController.text = userData.password;
-    confirmPassController.text = userData.confirmPassword;
     emailController.text = userData.email;
     notifyListeners();
   }
 
   Future updateUserData(context) async {
     CacheHelper.saveData(key:'token', value: emailController.text);
-    await AccountEditingRepo.updateUserData(RegisterRequestModel(
+    await AccountEditingRepo.updateUserData(
       firstName: fNameController.text,
       lastName: sNameController.text,
       email: emailController.text,
-      password: passController.text,
-      confirmPassword: confirmPassController.text,
-    ));
+    );
     customSnackBar(context, 'Updated successfully');
     notifyListeners();
   }
+
+  Future updatePasswordData(context) async {
+    CacheHelper.saveData(key:'token', value: emailController.text);
+    await AccountEditingRepo.updatePassword(
+      confirmPassword: confirmPassController.text,
+      password: passController.text
+    );
+    customSnackBar(context, 'Updated successfully');
+    notifyListeners();
+  }
+
+
 }
