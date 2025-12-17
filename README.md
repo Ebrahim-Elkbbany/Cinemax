@@ -42,6 +42,9 @@ Welcome to the Cinemax Application, a Movies Flutter project designed to showcas
 - [x] Language Screen
 - [x] Notification Screen
 
+### 🎬 App Demo
+ https://drive.google.com/file/d/1dcVWMVeTGyTM-ZuU4nNIG0Fp7MeogtBE/view?usp=sharing
+
 ### 📱 App Screens 
 
  *Onboarding*
